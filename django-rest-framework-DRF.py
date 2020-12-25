@@ -1,3 +1,4 @@
+# https://i.redd.it/ve66iak6gxm11.png
 
 # ========================================================================
 #        DOs                                                             #
@@ -316,3 +317,42 @@ class Response(SimpleTemplateResponse):
                        '510 not extended', '511 network auth req'],
 }
 
+
+# ========================================================================
+#        SIMPLE ROUTER                                                   #
+# ========================================================================
+
+
+"""
+URL Style            | HTTP Method             Action                  | URL Name
+=====================+=======================|=========================|========================
+{prefix}/            | GET                   | list                    | {basename}-list
+                     | POST                  | create                  |
+---------------------+-----------------------|-------------------------|------------------------
+{prefix}/{url_path}/ | GET, or as specified  | `@action(detail=False)` | {basename}-{url_name}
+                     | by `methods` argument | decorated method        |
+---------------------+-----------------------|-------------------------|------------------------
+{prefix}/{lookup}/   | GET                   | retrieve                | {basename}-detail
+                     | PUT                   | update                  |
+                     | PATCH                 | partial_update          |
+                     | DELETE                | destroy                 |
+---------------------+-----------------------|-------------------------|------------------------
+{prefix}/{lookup}/.. | GET, or as            | `@action(detail=True)`  |{basename}-{url_name}
+      ..{url_path}/  | specified by `methods`| decorated method        |
+                     | argument              |                         |
+"""
+
+router = SimpleRouter(trailing_slash=False)
+
+DefaultRouter = SimpleRouter[.format]
+
+
+
+additional_packages = [
+    'https://github.com/alanjds/drf-nested-routers',
+    'https://wq.io/wq.db',
+    'https://chibisov.github.io/drf-extensions/docs/',
+    'https://github.com/AltSchool/dynamic-rest',
+    'https://github.com/MattBroach/DjangoRestMultipleModels',
+    'https://github.com/MattBroach/DjangoRestMultipleModels',
+]
